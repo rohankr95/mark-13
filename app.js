@@ -160,10 +160,40 @@ function getNextPalindromeDate(date) {
     return [ctr, nextDate];
 }
 
-var date = {
-    day:31,
-    month:12,
-    year:2020
-};
+var dateInputRef = document.querySelector('#bday-input');
+var showBtnRef = document.querySelector('#show-btn');
+var resultRef = document.querySelector('#result');
 
-console.log(getNextPalindromeDate(date));
+function clickHandler(e){
+    // console.log(dateInputRef.value);
+    var bdayStr = dateInputRef.value;
+    if(bdayStr != ''){
+        var listOfDate = bdayStr.split('-');
+        var date = {
+            day: Number(listOfDate[2]),
+            month: Number(listOfDate[1]),
+            year: Number(listOfDate[0])
+        }
+        // console.log(date);
+        var isPalindrome =checkPalindromeForAllDateFormats(date);
+        if(isPalindrome){
+            resultRef.innerText ='Yay! your Birthday is a palindrome!!!'
+        }
+
+        else{
+            var [ctr, nextDate] = getNextPalindromeDate(date);
+            resultRef.innerText = 'Thenext palindrome date is  ${nextDate.day}-${nextDate.month}-${nextDate.year}  you missed it by  ${ctr} days!'
+        }
+    }
+}
+
+showBtnRef.addEventListener('click', clickHandler);
+
+
+// var date = {
+//     day:31,
+//     month:12,
+//     year:2020
+// };
+
+// console.log(getNextDate(date));
