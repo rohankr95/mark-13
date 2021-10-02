@@ -182,7 +182,7 @@ function clickHandler(e){
 
         else{
             var [ctr, nextDate] = getNextPalindromeDate(date);
-            resultRef.innerText = 'Thenext palindrome date is  ${nextDate.day}-${nextDate.month}-${nextDate.year}  you missed it by  ${ctr} days!'
+            resultRef.innerText = `The next palindrome date is  ${nextDate.day}-${nextDate.month}-${nextDate.year}  you missed it by  ${ctr} days!`
         }
     }
 }
